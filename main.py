@@ -44,16 +44,17 @@ def main():
 
         updatable.update(dt)
         
+        #checking each asteroid collision with each shot
         for a in asteroids:
             for s in shots:
                 if s.collides_with(a):
                     log_event("asteroid_shot")
                     new_ast = a.split()
+
+                    #checking if it split successfully
                     if len(new_ast) > 0:
                         asteroids.add(new_ast[0])
                         asteroids.add(new_ast[1])
-                    else:
-                        pass
                     s.kill()
 
             if a.collides_with(player):
